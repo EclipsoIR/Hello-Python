@@ -48,3 +48,13 @@ except ValueError as error:
     print(error)
 except Exception as my_random_error_name:
     print(my_random_error_name)
+
+
+# Esto seria para pillar el error si o si salga cual salga sin saber el tipo de error que va a salir
+    
+try:
+    print(numberOne + numberTwo)
+    print("No se ha producido un error")
+except Exception as my_random_error_name:
+    print(my_random_error_name)
+    
