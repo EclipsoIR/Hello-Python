@@ -9,27 +9,32 @@ from datetime import date
 from datetime import time
 from datetime import datetime
 
+
+
+pruebaAntonio = datetime.today()
+print("Esta si ",pruebaAntonio.day)
 now = datetime.now()
 
 
-def print_date(date):
+def print_date(date:date):
     print(date.year)
     print(date.month)
     print(date.day)
     print(date.hour)
     print(date.minute)
     print(date.second)
-    print(date.timestamp())
+    print(date.timestamp()) # Es lo que se utiliza para guarda fechas en bases de datos es una forma de guardar fechas en un formato estandar.
+    
 
 
 print_date(now)
 
 year_2023 = datetime(2023, 1, 1)
 
+print("Nuevos Datos")
 print_date(year_2023)
 
 # Time
-
 
 current_time = time(21, 6, 0)
 
