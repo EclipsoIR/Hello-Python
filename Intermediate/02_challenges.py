@@ -12,7 +12,6 @@ cada impresión), sustituyendo los siguientes:
 - Múltiplos de 3 y de 5 a la vez por la palabra "fizzbuzz".
 """
 
-
 def fizzbuzz():
     for index in range(1, 101):
         if index % 3 == 0 and index % 5 == 0:
@@ -56,6 +55,20 @@ de Fibonacci empezando en 0.
 """
 
 
+def fibonacciAntonio ():
+    prev = 0
+    next = 1
+    for i in range(51):
+        print(prev)
+        fib = prev+next
+        prev = next 
+        next = fib
+
+
+
+# print("Mi fibo ")
+# fibonacciAntonio()
+
 def fibonacci():
 
     prev = 0
@@ -76,6 +89,19 @@ Escribe un programa que se encargue de comprobar si un número es o no primo.
 Hecho esto, imprime los números primos entre 1 y 100.
 """
 
+def primoAntonio ():
+    for i in range (2,101):
+        primo = True
+        for j in range (2,i):
+            if(i%j==0):
+                primo=False
+                break
+        if(primo):
+            print(i) 
+            
+            
+print("Primo mio")
+primoAntonio()      
 
 def is_prime():
 
@@ -113,3 +139,20 @@ def reverse(text):
 
 
 print(reverse("Hola mundo"))
+
+def reverseMejorado(text):
+    text_len = len(text)
+    reversed_text = ""
+    for index in range(text_len): # text_len es 10 pero la palabra llega hasta la posicion 9 por eso abajo se resta -1 
+        reversed_text += text[text_len - index-1]
+    return reversed_text
+
+print(reverseMejorado("Hola mundo"))
+
+print(len("Hola mundo"))
+
+def reverseAntonio (text:str):
+    return text[::-1]
+
+
+print(reverseAntonio("Loca"))

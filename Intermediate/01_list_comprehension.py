@@ -10,6 +10,9 @@ print(list(my_range))
 
 # Definición
 
+listaAntonio = [i for i in range (1,12)]
+print(listaAntonio)
+
 my_list = [i + 1 for i in range(8)]
 print(my_list)
 
@@ -26,3 +29,12 @@ def sum_five(number):
 
 my_list = [sum_five(i) for i in range(8)]
 print(my_list)
+
+
+
+def par_number(number:int):
+    if(number%2==0):
+        return number
+    
+listaAntonioNumerosParaes = [par_number(i) for i in range (1,11)]
+print(listaAntonioNumerosParaes)

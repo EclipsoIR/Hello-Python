@@ -37,22 +37,27 @@ print_date(year_2023)
 # Time
 
 current_time = time(21, 6, 0)
-
 print(current_time.hour)
 print(current_time.minute)
 print(current_time.second)
 
+# Esto no funciona no es como el datetime.now() a la forma del time tienes que definirlo antes como esta arriba
+# print("Prueba mia")
+# print(time.hour)
+# print(time.minute)
+# print(time.second)
+
+
 # Date
 
 
-current_date = date.today()
-
+current_date = date.today() # Con esto estas inicializando la variable a el dia de hoy
 print(current_date.year)
 print(current_date.month)
 print(current_date.day)
 
 current_date = date(2022, 10, 6)
-
+print("DATE")
 print(current_date.year)
 print(current_date.month)
 print(current_date.day)
@@ -74,7 +79,7 @@ print(diff)
 
 
 start_timedelta = timedelta(200, 100, 100, weeks=10)
-end_timedelta = timedelta(300, 100, 100, weeks=13)
+end_timedelta = timedelta(300, 100, 100, weeks=13) 
 
 print(end_timedelta - start_timedelta)
 print(end_timedelta + start_timedelta)
