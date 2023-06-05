@@ -13,12 +13,12 @@ from mypackage import arithmetics
 import requests
 import numpy
 
-print(numpy.version.version)
+# print(numpy.version.version)
 
-numpy_array = numpy.array([35, 24, 62, 52, 30, 30, 17])
-print(type(numpy_array))
+# numpy_array = numpy.array([35, 24, 62, 52, 30, 30, 17])
+# print(type(numpy_array))
 
-print(numpy_array * 2)
+# print(numpy_array * 2)
 
 # pip install pandas
 
@@ -29,7 +29,7 @@ print(numpy_array * 2)
 # pip install requests
 
 response = requests.get("https://pokeapi.co/api/v2/pokemon?limit=151")
-print(response)
+# print(response.json()["results"])
 print(response.status_code)
 print(response.json())
 
