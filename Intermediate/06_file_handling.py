@@ -19,6 +19,7 @@ txt_file.write(
 print(txt_file.read(10))
 print(txt_file.readline())
 print(txt_file.readline())
+print(txt_file.readlines()) # Te devuelve una lista con todo el contenido que hay dentro del fichero
 for line in txt_file.readlines():
     print(line)
 
@@ -27,14 +28,16 @@ print(txt_file.readline())
 
 txt_file.close()
 
-with open("Intermediate/my_file.txt", "a") as my_other_file:
-    my_other_file.write("\nY Swift")
+# with open("Intermediate/my_file.txt", "a") as my_other_file:
+#     my_other_file.write("\nY Swift")
 
 # os.remove("Intermediate/my_file.txt")
 
-# Clase en vídeo (03/11/22): https://www.twitch.tv/videos/1642512950
+## Clase en vídeo (03/11/22): https://www.twitch.tv/videos/1642512950
 
-# .json file
+## .json file
+
+# import json
 
 
 json_file = open("Intermediate/my_file.json", "w+")
@@ -46,15 +49,21 @@ json_test = {
     "languages": ["Python", "Swift", "Kotlin"],
     "website": "https://moure.dev"}
 
-json.dump(json_test, json_file, indent=2)
+json.dump(json_test, json_file, indent=2) # Sirve para escribir el fichero json
 
 json_file.close()
 
-with open("Intermediate/my_file.json") as my_other_file:
-    for line in my_other_file.readlines():
-        print(line)
+json_file=open("Intermediate/my_file.json", "r+")
+print(json_file.read())
+# prueba = json.load(json_file) no se porque esta linea da error y no deja ponerlo como diccionario si es lo mismo que abajo
+# print(prueba)
+json_file.close()
 
-json_dict = json.load(open("Intermediate/my_file.json"))
+# with open("Intermediate/my_file.json") as my_other_file:
+#     for line in my_other_file.readlines():
+#         print(line)
+
+json_dict = json.load(open("Intermediate/my_file.json")) # Esto lo que hace es leer el JSON y directamente te lo trae en formato diccionario OSEA ESTA FUNCION PARA HABRILO ES MUY BUENA 
 print(json_dict)
 print(type(json_dict))
 print(json_dict["name"])

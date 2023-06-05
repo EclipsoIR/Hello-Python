@@ -93,3 +93,36 @@ print(reduce(sum_two_values, numbers))
 
 
 print(reduce(lambda number1, number2 : number1*number2, numbers))
+
+
+
+# PRUEBA DE HACER UN FILTER A UNA LISTA DE DICCIONARIOS
+
+
+aquarium_creatures = [
+  {"name": "sammy", "species": "shark", "tank number": "11", "type": "fish"},
+  {"name": "ashley", "species": "crab", "tank number": "25", "type": "shellfish"},
+  {"name": "jo", "species": "guppy", "tank number": "18", "type": "fish"},
+  {"name": "jackie", "species": "lobster", "tank number": "21", "type": "shellfish"},
+  {"name": "charlie", "species": "clownfish", "tank number": "12", "type": "fish"},
+  {"name": "jackie", "species": "green turtle", "tank number": "34", "type": "turtle"}
+]
+
+# print(aquarium_creatures[1].items())
+def filter_aquarium (aquarium_criatures_list:list,filter_word:str,word:str):
+    def iteration_dic(x):
+        for key,value in x.items():
+            if(key == filter_word):
+                if(word == value):
+                    return True
+        return False
+    return list(filter(iteration_dic,aquarium_criatures_list))
+
+
+print(filter_aquarium(aquarium_creatures,"type","fish"))
+
+
+
+# PRUEBA DE LO DE ARRIBA DIRECTAMENTE CON UN LAMBDA 
+# Creo que no se puede hacer
+# print(list(filter(lambda x, y: True if x),for key, values in aquarium_creatures))

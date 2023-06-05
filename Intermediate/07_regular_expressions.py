@@ -5,7 +5,7 @@
 import re
 
 # match
-
+# Tiene que machear desde el principio sino el este te dice que no lo ha encontrado
 my_string = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
 my_other_string = "Esta no es la lección número 6: Manejo de ficheros"
 
@@ -25,14 +25,14 @@ if match is not None:
 print(re.match("Expresiones Regulares", my_string))
 
 # search
-
+# Esto encuentra lo que quieres en cualquie sitio . La diferencia entre este y el match es que el match empieza desde el principio
 search = re.search("lección", my_string, re.I)
 print(search)
 start, end = search.span()
 print(my_string[start:end])
 
 # findall
-
+# Devuelve un listado con las veces que ha encontrado lo que le estas diciendo
 findall = re.findall("lección", my_string, re.I)
 print(findall)
 
@@ -41,7 +41,7 @@ print(findall)
 print(re.split(":", my_string))
 
 # sub
-
+# Esto sirve para sustituir
 print(re.sub("[l|L]ección", "LECCIÓN", my_string))
 print(re.sub("Expresiones Regulares", "RegEx", my_string))
 
@@ -50,6 +50,9 @@ print(re.sub("Expresiones Regulares", "RegEx", my_string))
 ### Regular Expressions Patterns ###
 
 # Para aprender y validar expresiones regulares: https://regex101.com
+
+
+print("LO IMPORTANTE ESTA AQUI")
 
 pattern = r"[lL]ección"
 print(re.findall(pattern, my_string))
@@ -61,10 +64,10 @@ pattern = r"[0-9]"
 print(re.findall(pattern, my_string))
 print(re.search(pattern, my_string))
 
-pattern = r"\d"
+pattern = r"\d"  # Devuelve los numeros
 print(re.findall(pattern, my_string))
 
-pattern = r"\D"
+pattern = r"\D" # Devuelve las letras
 print(re.findall(pattern, my_string))
 
 pattern = r"[l].*"
