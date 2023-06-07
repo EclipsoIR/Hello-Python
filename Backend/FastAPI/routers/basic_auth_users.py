@@ -1,14 +1,12 @@
 # Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=14094
 
 ### Users API con autorización OAuth2 básica ###
-from fastapi import FastAPI
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-app = FastAPI()
-# router = APIRouter(prefix="/basicauth",
-#                    tags=["basicauth"],
-#                    responses={status.HTTP_404_NOT_FOUND: {"message": "No encontrado"}})
+router = APIRouter(prefix="/basicauth",
+                   tags=["basicauth"],
+                   responses={status.HTTP_404_NOT_FOUND: {"message": "No encontrado"}})
 
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 
@@ -44,7 +42,7 @@ users_db = {
 
 def search_user_db(username: str):
     if username in users_db:
-        return UserDB(**users_db[username])
+        return UserDB(**users_db[username]) # Tiene que poner las dobles multiplicaciones porque UserDB es herencia de user
 
 
 def search_user(username: str):
@@ -68,7 +66,7 @@ async def current_user(token: str = Depends(oauth2)):
     return user
 
 
-@app.post("/login")
+@router.post("/login")
 async def login(form: OAuth2PasswordRequestForm = Depends()):
     user_db = users_db.get(form.username)
     if not user_db:
@@ -83,6 +81,6 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
     return {"access_token": user.username, "token_type": "bearer"}
 
 
-@app.get("/users/me")
+@router.get("/users/me",response_model=User)
 async def me(user: User = Depends(current_user)):
     return user

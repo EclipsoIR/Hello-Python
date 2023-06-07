@@ -23,9 +23,9 @@ async def user(id: str):
     return search_user("_id", ObjectId(id))
 
 
-@router.get("/")  # Query
-async def user(id: str):
-    return search_user("_id", ObjectId(id))
+# @router.get("/")  # Query la comento porque si no en el suaweger no sales el get que recoge a todos los usuarios
+# async def user(id: str):
+#     return search_user("_id", ObjectId(id))
 
 
 @router.post("/", response_model=User, status_code=status.HTTP_201_CREATED)
@@ -38,7 +38,6 @@ async def user(user: User):
     del user_dict["id"]
 
     id = db_client.users.insert_one(user_dict).inserted_id
-
     new_user = user_schema(db_client.users.find_one({"_id": id}))
 
     return User(**new_user)
@@ -48,7 +47,7 @@ async def user(user: User):
 async def user(user: User):
 
     user_dict = dict(user)
-    del user_dict["id"]
+    del user_dict["id"] # Eliminamos el id para que no se pueda modificar el id sino que sea el mismo que el User que esta en la base de datos con el mismo id
 
     try:
         db_client.users.find_one_and_replace(

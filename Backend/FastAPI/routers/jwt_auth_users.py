@@ -17,6 +17,7 @@ router = APIRouter(prefix="/jwtauth",
                    tags=["jwtauth"],
                    responses={status.HTTP_404_NOT_FOUND: {"message": "No encontrado"}})
 
+
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 
 crypt = CryptContext(schemes=["bcrypt"])
@@ -91,7 +92,7 @@ async def current_user(user: User = Depends(auth_user)):
 @router.post("/login")
 async def login(form: OAuth2PasswordRequestForm = Depends()):
 
-    user_db = users_db.get(form.username)
+    user_db = users_db.get(form.username) # No se porque hace el get y no llama ya a la funcion del usuario de get_user_db
     if not user_db:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="El usuario no es correcto")
@@ -109,5 +110,5 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 
 
 @router.get("/users/me")
-async def me(user: User = Depends(current_user)):
+async def me(user: User = Depends(current_user)): # Este user lo pilla de la autentificacion que lo que devuelve es el usuario no se yo si me gusta eso a mi me gustaria que devolviera True de autorizado y False si no esta autorizado
     return user
